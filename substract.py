@@ -20,5 +20,5 @@ sub = cv2.subtract(image1, image2_resized)
 cv2.imshow('Subtracted Image', sub)
 
 # Wait for key press
-if cv2.waitKey(0) & 0xFF == 27:  # Press 'Esc' to close
+if cv2.waitKey(0) & 0xFF == 27:  
     cv2.destroyAllWindows()
