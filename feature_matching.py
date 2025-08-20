@@ -1,0 +1,16 @@
+import cv2 
+import numpy as np 
+query_img=cv2.imread('1bit1.png')
+train_img=cv2.imread('1bit1.png')
+query_img=cv2.cvtColor(query_img,cv2.COLOR_BGR2GRAY)
+train_img=cv2.cvtColor(train_img,cv2.COLOR_BGR2GRAY)
+orb=cv2.ORB_create()
+queryKeypoints,queryDescriptions=orb.detectAndCompute(query_img,None)
+trainKeypoints,tarinDescriptions=orb.detectAndCompute(train_img,None)
+matcher=cv2.BFMatcher()
+matches=matcher.match(queryDescriptions,tarinDescriptions)
+final_img=cv2.drawMatches(query_img,queryKeypoints,train_img,trainKeypoints,matches[:20],None)
+final_img=cv2.resize(final_img,(1000,650))
+cv2.imshow("Matches",final_img)
+cv2.waitKey()
+cv2.destroyAllWindows()
