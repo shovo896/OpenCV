@@ -4,7 +4,7 @@ import numpy as np
 image=cv2.imread('img_5terre.jpg')
 image_rgb=cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
 width,height=image_rgb.shape[1],image_rgb.shape[0]
-shareX,shareY=-0.15,0
+shearX,shearY=-0.15,0
 transformation_matrix=np.array([[[1,shearX,0],[0,1,shearY]]],dtype=np.float32)
 sheard_image=cv2.warpAffine(image_rgb,transformation_matrix,(width,height))
 fig,axs=plt.subplots(1,2,figsize=(7,4))
