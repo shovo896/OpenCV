@@ -6,7 +6,7 @@ center=(image_rgb.shape[1]//2,image_rgb.shape[0]//2)
 angle=30 
 scale=1
 rotation_matrix=cv2.getRotationMatrix2D(center,angle,scale)
-rotated_image=cv2.warpAffine(image_rgb,rotation_matrix,(img.shape[-1]),img.shape[0])
+rotated_image=cv2.warpAffine(image_rgb,rotation_matrix,(img.shape[-1],img.shape[0]))
 fig,axs=plt.subplots(1,2,figsize=(7,4))
 axs[0].imshow(image_rgb)
 axs[0].set_title('Orginal_image')
