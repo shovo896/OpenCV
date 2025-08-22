@@ -11,7 +11,7 @@ def pixelVal(pix, r1, s1, r2, s2):
         return ((255 - s2)/(255 - r2)) * (pix - r2) + s2
 
 # Open the image.
-img = cv2.imread('sample.jpg')
+img = cv2.imread('1bit1.png')
 
 # Define parameters.
 r1 = 70
