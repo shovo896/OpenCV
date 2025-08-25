@@ -9,4 +9,11 @@ def pixelVal(pix,r1,s1,r2,s2):
     else:
         return ((255-s2)/(255-r2))*(pix-r2)+s2
     img=cv2.imread('gamma_transformed0.1.jpg')
+#define paramenters 
+r1=70;
+s1=0;
+r2=140;
+s2=255;
+pixelVal_vec=np.vectorize(pixelVal)
+contrast_stretched=pixel_vec(=)
    
