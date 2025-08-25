@@ -8,7 +8,7 @@ def pixelVal(pix,r1,s1,r2,s2):
         return ((s2-s1)/(r2-r1)*(pix-r1)+s1)
     else:
         return ((255-s2)/(255-r2))*(pix-r2)+s2
-    img=cv2.imread('gamma_transformed0.1.jpg')
+img=cv2.imread('gamma_transformed0.1.jpg')
 #define paramenters 
 r1=70;
 s1=0;
