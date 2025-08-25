@@ -15,5 +15,6 @@ s1=0;
 r2=140;
 s2=255;
 pixelVal_vec=np.vectorize(pixelVal)
-contrast_stretched=pixel_vec(=)
+contrast_stretched=pixelVal_vec(img,r1,r2,s1,s2)
+cv2.imwrite('Cotrast_stretch.jpg',contrast_stretched)
    
