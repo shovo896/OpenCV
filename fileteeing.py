@@ -18,11 +18,18 @@ orb_detector = cv2.ORB_create(5000)
 kp1, d1 = orb_detector.detectAndCompute(img1, None)
 kp2, d2 = orb_detector.detectAndCompute(img2, None)
 
+# Check if descriptors are found
+if d1 is None or d2 is None:
+    raise ValueError("No descriptors found! Try different images or ORB parameters.")
+
 # Brute Force matcher
 matcher = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
 matches = matcher.match(d1, d2)
 
-# Sort matches by distance (best first)
+if len(matches) < 4:
+    raise ValueError("Not enough matches found to compute homography!")
+
+# Sort matches by distance
 matches = sorted(matches, key=lambda x: x.distance)
 
 # Keep top 90% matches
@@ -37,7 +44,7 @@ for i in range(no_of_matches):
     p1[i, 0, :] = kp1[matches[i].queryIdx].pt
     p2[i, 0, :] = kp2[matches[i].trainIdx].pt
 
-# Compute Homography using RANSAC
+# Compute Homography
 homography, mask = cv2.findHomography(p1, p2, cv2.RANSAC)
 
 # Warp perspective
