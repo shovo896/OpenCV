@@ -1,6 +1,6 @@
 import cv2 
 import numpy as np
-image=cv2.imread('DSC07229.JPG',0)
+image=cv2.imread('img_5terre.jpg',0)
 kernel=np.ones((5,5),np.uint8)
 erosion=cv2.erode(image,kernel,iterations=1)
 dilation=cv2.dilate(image,kernel,iterations=1)
