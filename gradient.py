@@ -1,6 +1,6 @@
 import cv2 
 import numpy as np 
-screenRead=cv2.VedioCapture(0)
+screenRead=cv2.VideoCapture(0)
 while True :
     _,image=screenRead.read()
     hsv=cv2.cvtColor(image,cv2.COLOR_BGR2HSV)
