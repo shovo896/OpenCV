@@ -12,7 +12,7 @@ while True :
     cv2.imshow('Orginal Blue mask ',mask)
     cv2.imshow('After Opening (Noise Removed)',opening)
     #press a to stop
-    if cv2.waitKey(1) & )xFF==ord('a'):
+    if cv2.waitKey(1) & 0xFF==ord('a'):
         break 
 
 cv2.destroyAllWindows()
