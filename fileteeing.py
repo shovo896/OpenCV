@@ -1,22 +1,47 @@
-import cv2 
-import numpy as np 
-img1_color=cv2.imread("gamma_transformed0.1.jpg")
-img2_color=cv2.imread("log_transformed.jpg")
-height,width=img2.shape 
-orb_detector=cv2.ORB_create(5000)
-kp1,d1=orb_detector.detectAndCompute(img1,None)
-kp2,d2=orb_detector.detectAndCompute(img2,None)
-matcher=cv2.BFMatcher(cv2.NORM_HAMMING,crossCheck=True)
-matches=matcher.match(d1,d2)
-matches.sort(key=lambda x : x.distance) #explainig lambda function 
-matches= matches[:int(len(matches)*0.9)]
-no_of_matches=len(matches)
-p1=np.zeros((no_of_matches,2))
-p2=np.zeros((no_of_matches,2))
+import cv2
+import numpy as np
 
-for i in range(len(matches)):
-    p1[i,:]=kp1[matches[i].queryIdx].pt
-    p2[i,:]=kp2[matches[i].trainIdx].pt
-homography,mask=cv2.findHomography(p1,p2,cv2.RANSC)
-transformed_img=cv2.wrapPrespective(img1_color,homography,(width,height))
-cv2.imwrite('output.jpg',transformed_img)
+# Load images
+img1_color = cv2.imread("gamma_transformed0.1.jpg")
+img2_color = cv2.imread("log_transformed.jpg")
+
+# Convert to grayscale
+img1 = cv2.cvtColor(img1_color, cv2.COLOR_BGR2GRAY)
+img2 = cv2.cvtColor(img2_color, cv2.COLOR_BGR2GRAY)
+
+height, width = img2.shape
+
+# ORB detector
+orb_detector = cv2.ORB_create(5000)
+
+# Find keypoints and descriptors
+kp1, d1 = orb_detector.detectAndCompute(img1, None)
+kp2, d2 = orb_detector.detectAndCompute(img2, None)
+
+# Brute Force matcher
+matcher = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
+matches = matcher.match(d1, d2)
+
+# Sort matches by distance (best first)
+matches = sorted(matches, key=lambda x: x.distance)
+
+# Keep top 90% matches
+matches = matches[:int(len(matches) * 0.9)]
+no_of_matches = len(matches)
+
+# Store matched points
+p1 = np.zeros((no_of_matches, 1, 2))
+p2 = np.zeros((no_of_matches, 1, 2))
+
+for i in range(no_of_matches):
+    p1[i, 0, :] = kp1[matches[i].queryIdx].pt
+    p2[i, 0, :] = kp2[matches[i].trainIdx].pt
+
+# Compute Homography using RANSAC
+homography, mask = cv2.findHomography(p1, p2, cv2.RANSAC)
+
+# Warp perspective
+transformed_img = cv2.warpPerspective(img1_color, homography, (width, height))
+
+# Save result
+cv2.imwrite('output.jpg', transformed_img)
