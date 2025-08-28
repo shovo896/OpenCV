@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 
 # Load video file
-cap = cv2.VideoCapture('/home/sourabh/Downloads/people-walking.mp4')
+cap = cv2.VideoCapture('')
 
 # Create background subtractor (MOG2 handles shadows well)
 fgbg = cv2.createBackgroundSubtractorMOG2()
