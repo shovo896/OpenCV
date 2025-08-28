@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 
 # Load video file
-cap = cv2.VideoCapture('')
+cap = cv2.VideoCapture('13858986_2048_1080_30fps.mp4')
 
 # Create background subtractor (MOG2 handles shadows well)
 fgbg = cv2.createBackgroundSubtractorMOG2()
