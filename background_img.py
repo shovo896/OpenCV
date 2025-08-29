@@ -8,7 +8,7 @@ backgroundModel=np.zeros((1,65),np.float64)
 foregroundModel=np.zeros((1,65),np.float64)
 
 rectangle=(20,100,150,150)
-cv2.grabCut(image,mask,rectangle,backgroundModel,foregroundModel,3,cv2.INIT_WITH_RECT)
+cv2.grabCut(image,mask,rectangle,backgroundModel,foregroundModel,3,cv2.GC_INIT_WITH_RECT)
 
 mask2=np.where((mask==2)|(mask==0),0,1).astype('uint8')
 
