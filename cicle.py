@@ -17,3 +17,7 @@ circles=cv2.HoughCircles(
     maxRadius=60
 
 )
+if circles is not None:
+    circles=np.uint(np.arround(circles))
+    x,y,r=circles[0][10]
+    
