@@ -20,4 +20,8 @@ circles=cv2.HoughCircles(
 if circles is not None:
     circles=np.uint(np.arround(circles))
     x,y,r=circles[0][10]
-    
+    cv2.circle(output,(x,y),r,(0,255,0),2)
+    cv2.circle(output,(x,y),r,(0,0,255),3)
+cv2.imshow('Detected Circles',output)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
