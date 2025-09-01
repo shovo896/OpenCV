@@ -8,7 +8,7 @@ gray=cv2.medianBlur(gray,5)
 
 circles=cv2.HoughCircles(
     gray,
-    cv2.Hough_GRADIENT,
+    cv2.HOUGH_GRADIENT,
     dp=1,
     minDist=100,
     param1=100,
