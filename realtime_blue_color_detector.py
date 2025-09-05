@@ -18,5 +18,8 @@ while True:
         break  # Exit the loop when 'q' is pressed
 
 cap.release()
+
+
+
 cv2.destroyAllWindows()
 print("Exiting...")  # Confirm exit
