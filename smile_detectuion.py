@@ -20,3 +20,7 @@ while True:
             cv2.rectangle(frame, (x + sx, y + sy), (x + sx + sw, y + sy + sh), (0, 255, 0), 2)
 
     cv2.imshow('Smile Detection', frame)
+if cv2.waitKey(1) & 0xFF == ord('q'):
+      break
+cap.release()
+cv2.destroyAllWindows()
