@@ -3,11 +3,11 @@ face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades +'haarcascade_frontal
 eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades +'haarcascade_eye.xml')
 smile_cascade = cv2.CascadeClassifier(cv2.data.haarcascades +'haarcascade_smile.xml')
 
-cv2.VideoCapture(0)
+cap=cv2.VideoCapture(0)
 while True:
     ret,frame = cap.read()
     if not ret:
         print("failed to grab frame")
         break
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    faces=face_cascade
+    faces=face_cascade.d
