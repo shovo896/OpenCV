@@ -36,7 +36,7 @@ def getBoxed(img, img_gray, template, field_name = "policy_no"):
 if __name__ == '__main__':
 
     # Read the original document image
-    img = cv2.imread('doc.png')
+    img = cv2.imread('mask.jpg')
       
     # 3-d to 2-d conversion
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
